@@ -1,0 +1,36 @@
+body,
+html {
+    min-height: 100vh;
+}
+
+html {
+    background: linear-gradient(to right, #ED4264, #FFEDBC);
+}
+
+body {
+    background: url('../images/subtle-grey.png') repeat;
+}
+
+i {
+    margin-right: 0.5em;
+}
+
+.event-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.event-list .event-image {
+    height: 350px;
+    object-fit: cover;
+    width: 250px;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.nav-item .img-thumbnail {
+    max-width: 50px;
+}

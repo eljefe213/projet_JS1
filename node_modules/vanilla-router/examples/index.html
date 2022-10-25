@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla router</title>
+</head>
+<body>
+<pre>Open console log to see the logs</pre>
+<h1 id="title"></h1>
+<script src="../index.js"></script>
+<script>
+    var router = new Router({
+        mode: 'hash',
+        root: '/index.html',
+        hooks: {
+            before: function (newPage) {
+                console.info('Before page loads hook', newPage);
+            }
+        },
+        page404: function (path) {
+            console.log('"/' + path + '" Page not found');
+        }
+    });
+
+    router
+            .add('', function () {
+                console.log('Home page');
+                document.getElementById('title').innerHTML = "Home Page";
+            })
+            .add('search', function () {
+                console.log('Search Page');
+                document.getElementById('title').innerHTML = 'Search for: ' + this.query.q;
+            }, {
+                unloadCb: function (async) {
+                    if (async){
+                        console.warn("You have unsaved data!");
+                        return confirm("You have unsaved data! Continue?");
+                    }
+                    return false;
+                }
+            })
+            .add('hello/(:any)', function (name) {
+                console.log('Hello, ' + name, this.state);
+                document.getElementById('title').innerHTML = 'Hello, ' + name;
+            })
+            .add('about', function () {
+                console.log('About Page');
+                document.getElementById('title').innerHTML = 'About Page';
+            })
+            .remove('about')
+            .check()
+            .addUriListener()
+            .navigateTo('hello/World', {foo: "bar"})
+            .refresh();
+
+    window.router = router;
+</script>
+</body>
+</html>

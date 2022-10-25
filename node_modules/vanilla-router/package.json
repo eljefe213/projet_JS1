@@ -1,0 +1,26 @@
+{
+  "name": "vanilla-router",
+  "version": "1.2.8",
+  "description": "JS vanilla Router",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "router",
+    "opa",
+    "webpack-router",
+    "browserify-router"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Graidenix/vanilla-router.git"
+  },
+  "author": "grigore@odajiu.eu",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  }
+}
